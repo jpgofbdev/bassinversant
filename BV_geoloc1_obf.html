@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Leaflet avec WFS JSON</title>
+    <!-- Inclure la feuille de style Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="./bvgeoloc.css">
+<!--  SCRIPT MODULES
+    ////////////////////////////////////////////////////////////////////// -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.2/proj4.js"></script>
+    <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
+    <script src="./jszip.js"></script>
+    <script src="./turf.min.js" charset="utf-8"></script>
+    <script src="http://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.js"></script>
+    <script src="./bvgeoloc_obf.js"></script>
+
+</head>
+<body>
+    <div id="header">
+        <img src="logo.jpg" alt="Logo OFB">
+        <h1>Outil bassin versant</h1>
+        <div class="right-text">produit par la DR CVL</div>
+        <div class="icons">
+            <a href="./information.html" title="Mode d'emploi">&#x1F4D6;</a>
+            <a href="./information.html" title="Informations">&#x2139;</a>
+        </div>
+    </div>
+    
+    <div id="map"></div>
+
+    <input type="file" id="file-input" accept=".geojson" title="Charger un fichier GeoJSON">
+
+
+    <div id="controls-container">
+        <div class="checkbox-group">
+            <label>
+                <input type="checkbox" id="pollueurs-checkbox" /> Etablissements pollueurs BBOX du BV
+            </label>
+            <button id="download-json-button">Etab_pollueurs_bv.json</button>
+            <button id="download-csv-button">Etab_pollueurs_bv.csv</button>
+        </div>
+        
+        <div class="checkbox-group">
+            <label>
+                <input type="checkbox" id="step-checkbox" /> Stations d'épuration BBOX du BV
+            </label>
+            <button id="download-json-button">steps_bv.json</button>
+            <button id="download-csv-button">steps_bv.csv</button>
+        </div>
+    </div>
+
+    <div id="controls-container-topage2">
+        Cours d'eau
+        <div class="checkbox-group-topage">
+            <input type="checkbox" id="checkbox-18" value="18">
+            <label for="checkbox-18">18</label>
+        </div>
+        <div class="checkbox-group-topage">
+            <input type="checkbox" id="checkbox-28" value="28">
+            <label for="checkbox-28">28</label>
+        </div>
+        <div class="checkbox-group-topage">
+            <input type="checkbox" id="checkbox-36" value="36">
+            <label for="checkbox-36">36</label>
+        </div>
+        <div class="checkbox-group-topage">
+            <input type="checkbox" id="checkbox-37" value="37">
+            <label for="checkbox-37">37</label>
+        </div>
+        <div class="checkbox-group-topage">
+            <input type="checkbox" id="checkbox-41" value="41">
+            <label for="checkbox-41">41</label>
+        </div>
+        <div class="checkbox-group-topage">
+            <input type="checkbox" id="checkbox-45" value="45">
+            <label for="checkbox-45">45</label>
+        </div>
+    </div>
+
+	<button id="download-button" class="download-button">Télécharger geojson bassin versant EPSG4326</button>
+    <label class="bboxbvorange-checkbox">
+        <input type="checkbox" id="bboxbvorange-checkbox">
+        Afficher BBOX
+    </label>
+    <div id="zoom-level">Le niveau de zoom est de 7. Le niveau conseillé pour choisir un point est de 13 au moins.</div>
+
+
+
+
+
+</body>
+</html>
